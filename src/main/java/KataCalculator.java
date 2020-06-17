@@ -11,6 +11,7 @@ public class KataCalculator {
         String[] values = numbers.split(",");
 
         for (String value : values) {
+            value = value.trim();
             sum = sum + Integer.parseInt(value);
         }
 

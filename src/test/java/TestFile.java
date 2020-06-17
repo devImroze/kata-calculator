@@ -14,4 +14,10 @@ public class TestFile {
         KataCalculator kataCalculator = new KataCalculator();
         assertEquals(5, kataCalculator.Add("2,3"));
     }
+
+    @Test
+    public void testWithMultipleNumbers() {
+        KataCalculator kataCalculator = new KataCalculator();
+        assertEquals(80, kataCalculator.Add("2,2,3, 8, 9,   56"));
+    }
 }
