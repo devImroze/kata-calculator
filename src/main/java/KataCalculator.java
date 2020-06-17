@@ -15,6 +15,9 @@ public class KataCalculator {
         String[] values = numbers.split(",");
 
         for (String value : values) {
+
+            if (Integer.parseInt(value) > 1000) continue;
+
             value = value.trim();
             sum = sum + Integer.parseInt(value);
         }
