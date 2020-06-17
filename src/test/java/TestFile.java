@@ -26,4 +26,10 @@ public class TestFile {
         KataCalculator kataCalculator = new KataCalculator();
         assertEquals(6, kataCalculator.Add("1\\n2,3"));
     }
+
+    @Test
+    public void testWithDifferentDelimiterSupport() {
+        KataCalculator kataCalculator = new KataCalculator();
+        assertEquals(3, kataCalculator.Add("//;\\n1;2"));
+    }
 }
