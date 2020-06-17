@@ -8,6 +8,8 @@ public class KataCalculator {
 
         int sum = 0;
 
+        numbers = numbers.replaceAll("\\D+", ",");
+
         String[] values = numbers.split(",");
 
         for (String value : values) {

@@ -20,4 +20,10 @@ public class TestFile {
         KataCalculator kataCalculator = new KataCalculator();
         assertEquals(80, kataCalculator.Add("2,2,3, 8, 9,   56"));
     }
+
+    @Test
+    public void testWithSpecialDelimiters() {
+        KataCalculator kataCalculator = new KataCalculator();
+        assertEquals(6, kataCalculator.Add("1\\n2,3"));
+    }
 }
