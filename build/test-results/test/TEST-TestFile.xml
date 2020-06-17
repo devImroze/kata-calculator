@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestFile" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-06-17T19:02:53" hostname="homelane-Latitude-3490" time="0.006">
+  <properties/>
+  <testcase name="testWithTwoNumbers" classname="TestFile" time="0.003"/>
+  <testcase name="testWithNumberMoreThanThousand" classname="TestFile" time="0.001"/>
+  <testcase name="testWithMultipleNumbers" classname="TestFile" time="0.0"/>
+  <testcase name="testWithSpecialDelimiters" classname="TestFile" time="0.0"/>
+  <testcase name="testWithMultipleNegativeNumber" classname="TestFile" time="0.001"/>
+  <testcase name="emptyStringCase" classname="TestFile" time="0.0"/>
+  <testcase name="testWithNegativeNumber" classname="TestFile" time="0.0"/>
+  <testcase name="testWithDifferentDelimiterSupport" classname="TestFile" time="0.0"/>
+  <testcase name="testWithMoreDelimiter" classname="TestFile" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
