@@ -32,4 +32,10 @@ public class TestFile {
         KataCalculator kataCalculator = new KataCalculator();
         assertEquals(3, kataCalculator.Add("//;\\n1;2"));
     }
+
+    @Test
+    public void testWithMoreDelimiter() {
+        KataCalculator kataCalculator = new KataCalculator();
+        assertEquals(3, kataCalculator.Add("//;\\n1;kjheeqcmm////;;;''']]]]2jobeqbdqbbqq"));
+    }
 }
