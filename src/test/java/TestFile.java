@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class TestFile {
     @Test
@@ -36,12 +37,23 @@ public class TestFile {
     @Test
     public void testWithMoreDelimiter() {
         KataCalculator kataCalculator = new KataCalculator();
-        assertEquals(3, kataCalculator.Add("//;\\n1;kjheeqcmm////;;;''']]]]2jobeqbdqbbqq"));
+        assertEquals(3, kataCalculator.Add("//;\\n1;&)&)!@#@#}{}{::><////;;;''']]]]2*(*_*_*_!@*#"));
     }
 
     @Test
     public void testWithNumberMoreThanThousand() {
         KataCalculator kataCalculator = new KataCalculator();
-        assertEquals(3, kataCalculator.Add("//;\\n1;kjheeqcmm////;;;''']]]]2jobeqbdq1001bbqq"));
+        assertEquals(3, kataCalculator.Add("//;\\n1;////;;;''']]]]2(*))*!@^^&^)@!"));
+    }
+
+    @Test
+    public void testWithNegativeNumber() {
+        KataCalculator kataCalculator = new KataCalculator();
+        try {
+            kataCalculator.Add("-1;4");
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("negatives not allowed [-1]", e.getMessage());
+        }
     }
 }
