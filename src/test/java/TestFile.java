@@ -1,7 +1,6 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class TestFile {
     @Test
@@ -43,7 +42,7 @@ public class TestFile {
     @Test
     public void testWithNumberMoreThanThousand() {
         KataCalculator kataCalculator = new KataCalculator();
-        assertEquals(3, kataCalculator.Add("//;\\n1;////;;;''']]]]2(*))*!@^^&^)@!"));
+        assertEquals(3, kataCalculator.Add("//;\\n1;//1001//;;;''']]]]2(*))*!@^^&^)@!"));
     }
 
     @Test
@@ -53,7 +52,7 @@ public class TestFile {
             kataCalculator.Add("-1;4");
         }
         catch (IllegalArgumentException e) {
-            assertEquals("negatives not allowed [-1]", e.getMessage());
+            assertEquals("negatives not allowed -1", e.getMessage());
         }
     }
 
@@ -64,7 +63,18 @@ public class TestFile {
             kataCalculator.Add("1;4----45*&^&---*%*-78--%^&%^&^&^][][][][]28");
         }
         catch (IllegalArgumentException e) {
-            assertEquals("negatives not allowed [-45, -78]", e.getMessage());
+            assertEquals("negatives not allowed -45, -78", e.getMessage());
         }
     }
+
+    @Test
+    public void testYourData() {
+
+        KataCalculator kataCalculator = new KataCalculator();
+
+        //Test your data here:
+        System.out.println("The sum is " +
+                kataCalculator.Add("vuf58gU)}P}{&^F&D$YG(G)g8{M{}OG86r56dyvjYD^$U*"));
+    }
+
 }

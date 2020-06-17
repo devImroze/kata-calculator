@@ -3,26 +3,21 @@ import java.util.ArrayList;
 
 public class KataCalculator {
 
-    List<Integer> negatives = new ArrayList<>();
-
     public int Add(String numbers) {
 
         if (numbers == null || numbers.isEmpty()) return 0;
 
-        if (containsNegative(numbers)) throw new IllegalArgumentException(
-                "negatives not allowed " + String.join(",", negatives.toString()));
+        checkIfContainsNegatives(numbers);
 
         int sum = 0;
 
         numbers = numbers.replaceAll("\\D+", ",");
 
-        numbers = trimSpecialCharactersFromBeginning(numbers);
-
         String[] values = numbers.split(",");
 
         for (String value : values) {
 
-            if (Integer.parseInt(value) > 1000) continue;
+            if (value.isEmpty() || Integer.parseInt(value) > 1000) continue;
 
             value = value.trim();
             sum = sum + Integer.parseInt(value);
@@ -31,41 +26,43 @@ public class KataCalculator {
         return sum;
     }
 
-    private boolean containsNegative(String numbers) {
-        for (int i = 0; i < numbers.length(); i++) {
-            if (numbers.charAt(i) == '-' && isNumber(numbers.charAt(i + 1))) {
+    private void checkIfContainsNegatives(String numbers) {
+        List<Integer> negatives = new ArrayList<>();
 
-                String number;
-                number = String.valueOf(numbers.charAt(i)) + numbers.charAt(i + 1);
-
-                for (int j = i + 2; j < numbers.length(); j++){
-                    if (isNumber(numbers.charAt(j))){
-                        number = number + numbers.charAt(j);
-                    }
-                    else break;
-                }
-
-                negatives.add(Integer.parseInt(number));
+        //check if there is any numeric value next to any minus sign
+        for (int index = 0; index < numbers.length(); index++) {
+            if (numbers.charAt(index) == '-' && isNumber(numbers.charAt(index + 1))) {
+                negatives.add(getTheExactNumber(index, numbers));
             }
         }
 
-        return !negatives.isEmpty();
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "negatives not allowed "
+                            +
+                            String.join(",", negatives.toString()
+                                    .replace("[", "")
+                                    .replace("]", "")));
+        }
     }
 
-    private String trimSpecialCharactersFromBeginning(String numbers) {
-        if (isNumber(numbers.charAt(0))) {
-            return numbers;
-        } else {
-            numbers = numbers.substring(1);
-            trimSpecialCharactersFromBeginning(numbers);
+    private Integer getTheExactNumber(int indexOfMinus, String numbers) {
+
+        String number = String.valueOf(numbers.charAt(indexOfMinus)) + numbers.charAt(indexOfMinus + 1);
+
+        //check if there is any other digit after the *starting* digit
+        for (int indexPostMinusAndDigit = indexOfMinus + 2; indexPostMinusAndDigit < numbers.length(); indexPostMinusAndDigit++) {
+            if (isNumber(numbers.charAt(indexPostMinusAndDigit))) {
+                number = number + numbers.charAt(indexPostMinusAndDigit);
+            } else break;
         }
 
-        return numbers;
+        return Integer.parseInt(number);
     }
 
     public boolean isNumber(Character number) {
         try {
-            double d = Integer.parseInt(number.toString());
+            Integer.parseInt(number.toString());
         } catch (NumberFormatException nfe) {
             return false;
         }
