@@ -56,4 +56,15 @@ public class TestFile {
             assertEquals("negatives not allowed [-1]", e.getMessage());
         }
     }
+
+    @Test
+    public void testWithMultipleNegativeNumber() {
+        KataCalculator kataCalculator = new KataCalculator();
+        try {
+            kataCalculator.Add("1;4----45*&^&---*%*-78--%^&%^&^&^][][][][]28");
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("negatives not allowed [-45, -78]", e.getMessage());
+        }
+    }
 }
